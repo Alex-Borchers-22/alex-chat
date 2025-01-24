@@ -25,14 +25,14 @@ export function LayoutContent({
 
   return (
     <html lang="en" className={geistSans.className} suppressHydrationWarning>
-      <body className="bg-background text-foreground h-screen flex flex-col overflow-hidden">
+      <body className="bg-background text-foreground min-h-screen flex flex-col">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <header className="flex-none border-b border-b-foreground/10 h-16">
+          <header className="sticky top-0 z-50 flex-none border-b border-b-foreground/10 h-16 bg-background">
             <div className="max-w-5xl mx-auto flex justify-between items-center p-3 px-5 h-full">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-gray-200">
@@ -58,8 +58,10 @@ export function LayoutContent({
               </div>
             </div>
           </header>
-          <main className="flex-1 overflow-hidden">
-            {children}
+          <main className="flex-1 relative">
+            <div className="absolute inset-0 overflow-auto">
+              {children}
+            </div>
           </main>
           <ContactDialog 
             open={isContactOpen} 
