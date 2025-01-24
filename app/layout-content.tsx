@@ -14,6 +14,7 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+// LayoutContent is the main layout component that wraps the entire application.
 export function LayoutContent({
   children,
 }: Readonly<{
