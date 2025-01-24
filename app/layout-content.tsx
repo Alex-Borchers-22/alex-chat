@@ -8,6 +8,7 @@ import { ContactDialog } from "@/components/contact-dialog";
 import "./globals.css";
 import alex from "@/public/alex.png";
 import Image from "next/image";
+import { Mail } from "lucide-react";
 
 const geistSans = Geist({
   display: "swap",
@@ -41,10 +42,17 @@ export function LayoutContent({
               </div>
               <div className="flex items-center gap-4">
                 <button
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md hidden sm:block"
                   onClick={() => setIsContactOpen(true)}
                 >
                   Reach Out in Real Life
+                </button>
+                <button
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 p-2 rounded-md sm:hidden"
+                  onClick={() => setIsContactOpen(true)}
+                  aria-label="Contact"
+                >
+                  <Mail size={20} />
                 </button>
                 <ThemeSwitcher />
               </div>
