@@ -6,7 +6,7 @@ import { ThemeProvider } from "next-themes";
 import { useState } from "react";
 import { ContactDialog } from "@/components/contact-dialog";
 import "./globals.css";
-import alex from "@/public/alex1.png";
+import alex from "@/public/alex.png";
 import Image from "next/image";
 
 const geistSans = Geist({
