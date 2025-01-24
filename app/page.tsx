@@ -41,9 +41,9 @@ export default function Home() {
   };
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="flex flex-col h-full">
       {messages.length === 0 ? (
-        // Centered layout for initial state
+        // Centered layout for initial state with centered input
         <div className="flex-1 flex flex-col items-center justify-center max-w-2xl mx-auto w-full px-4">
           <div className="text-center space-y-6">
             <h1 className="text-4xl font-bold">Chat with Alex</h1>
@@ -60,9 +60,9 @@ export default function Home() {
           </div>
         </div>
       ) : (
-        // Regular layout for conversation
-        <>
-          <div className="flex-1 overflow-y-auto">
+        // Regular layout for conversation with fixed bottom input
+        <div className="flex-1 flex flex-col">
+          <div className="flex-1 overflow-y-auto pb-[80px]">
             <div className="max-w-2xl mx-auto w-full px-4 py-8 space-y-6">
               {messages.map((message, index) => (
                 <Message
@@ -73,7 +73,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="flex-none border-t bg-background">
+          <div className="fixed bottom-0 left-0 right-0 bg-background border-t">
             <div className="max-w-2xl mx-auto w-full px-4 py-4">
               <MessageInput 
                 onSend={handleSendMessage}
@@ -81,7 +81,7 @@ export default function Home() {
               />
             </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );
