@@ -6,6 +6,8 @@ import { ThemeProvider } from "next-themes";
 import { useState } from "react";
 import { ContactDialog } from "@/components/contact-dialog";
 import "./globals.css";
+import alex from "@/public/alex1.png";
+import Image from "next/image";
 
 const geistSans = Geist({
   display: "swap",
@@ -32,7 +34,7 @@ export function LayoutContent({
             <div className="max-w-5xl mx-auto flex justify-between items-center p-3 px-5 h-full">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-gray-200">
-                  {/* Image placeholder - replace with your photo */}
+                  <Image src={alex} alt="Alex" className="w-full h-full object-cover rounded-full" />
                 </div>
                 <span className="font-semibold">Chat with Alex</span>
               </div>

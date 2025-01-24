@@ -8,6 +8,12 @@ const anthropic = new Anthropic({
 // This is a placeholder for your actual system prompt
 const SYSTEM_PROMPT = process.env.SYSTEM_PROMPT;
 
+// Add this interface at the top of the file
+interface ChatMessage {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
 export async function POST(request: Request) {
   try {
     const { messages } = await request.json();
@@ -18,13 +24,16 @@ export async function POST(request: Request) {
       max_tokens: 1024,
       temperature: 0.7,
       system: SYSTEM_PROMPT,
-      messages: messages.map((msg: any) => ({
+      messages: messages.map((msg: ChatMessage) => ({
         role: msg.role,
         content: msg.content,
       })),
     });
 
-    return NextResponse.json({ response: response.content[0].text });
+    if (response.content[0].type === 'text') {
+      return NextResponse.json({ response: response.content[0].text });
+    }
+    return NextResponse.json({ error: 'Unexpected response type' }, { status: 500 });
   } catch (error) {
     console.error('Error:', error);
     return NextResponse.json(
