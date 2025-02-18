@@ -6,9 +6,10 @@ import { SendHorizontal } from 'lucide-react';
 interface MessageInputProps {
   onSend: (message: string) => void;
   disabled?: boolean;
+  disabledMessage?: string;
 }
 
-export function MessageInput({ onSend, disabled }: MessageInputProps) {
+export function MessageInput({ onSend, disabled, disabledMessage }: MessageInputProps) {
   const [message, setMessage] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -38,14 +39,14 @@ export function MessageInput({ onSend, disabled }: MessageInputProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-3 items-end">
+    <form onSubmit={handleSubmit} className="flex gap-3 items-end" style={{ alignItems: 'normal' }}>
       <div className="flex-1 relative">
         <textarea
           ref={textareaRef}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder={disabled ? "Maximum questions reached" : "Ask me anything..."}
+          placeholder={disabled ? disabledMessage : "Ask me anything..."}
           className="w-full resize-none overflow-hidden rounded-xl border bg-background px-4 py-3 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           rows={1}
           disabled={disabled}
