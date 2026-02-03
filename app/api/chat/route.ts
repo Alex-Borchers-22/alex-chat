@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
+import { NextResponse } from 'next/server';
 
 const anthropic = new Anthropic({
   apiKey: process.env.CLAUDE_API_KEY,
@@ -20,7 +20,7 @@ export async function POST(request: Request) {
     console.log(messages);
 
     const response = await anthropic.messages.create({
-      model: 'claude-3-5-sonnet-20241022',
+      model: 'claude-sonnet-4-5-20250929',
       max_tokens: 1024,
       temperature: 0.7,
       system: SYSTEM_PROMPT,
