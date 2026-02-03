@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import { Message, type Role } from '@/components/message';
 import { MessageInput } from '@/components/message-input';
+import { useState } from 'react';
 
 interface ChatMessage {
   role: Role;
